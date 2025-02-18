@@ -7,7 +7,7 @@ lemmatizer = WordNetLemmatizer()
 
 ## function to stem and lemmetize a given sentence
 def preprocess(text):
-    words = text.split()
+    words = text.lower().split()
     stemmed_words = [stemmer.stem(word) for word in words]  # Apply stemming first
     lemmatized_words = [lemmatizer.lemmatize(word) for word in stemmed_words]  # Apply lemmatization
     return " ".join(lemmatized_words)

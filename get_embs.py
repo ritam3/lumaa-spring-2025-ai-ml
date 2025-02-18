@@ -4,7 +4,7 @@ import torch
 from transformers import AutoTokenizer, AutoModel
 from tf_idf import get_word2tfidf
 from data_load import get_preprocessed_df
-from preprocess_search_query import get_preprocessed_search_query
+from data_transform import preprocess
 
 bert_model_name = "distilbert-base-uncased"
 tokenizer = AutoTokenizer.from_pretrained(bert_model_name)
@@ -40,7 +40,7 @@ def sentence_embedding(sentence, model, tokenizer, word2tfidf):
 ## returns the document embeddings, query embeddings and preprocessed dataframe
 def get_embeddings(search_query):
     df = get_preprocessed_df()
-    search_query = get_preprocessed_search_query(search_query)
+    search_query = preprocess(search_query)
     word2tfidf = get_word2tfidf(df,search_query)
     document_embeddings = np.array([sentence_embedding(sent, model, tokenizer, word2tfidf) for sent in df['description_final'].to_list()])
     query_embeddings = np.array([sentence_embedding(search_query, model, tokenizer, word2tfidf)])
