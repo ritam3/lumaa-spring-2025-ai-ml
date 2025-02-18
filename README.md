@@ -72,3 +72,9 @@ Build a **content-based recommendation system** that, given a **short text descr
       Similarity Score: 0.8060258030891418
      ```
 
+6. **Video Demo**  
+   - (https://drive.google.com/file/d/1llmWFv6Yd2OoTthLpwXPboKrlwxNxkQ7/view?usp=sharing)
+
+7. **Salary Expectation**  
+   - I am looking for $2,400 per month, based on a rate of $30 per hour for 20 hours per week.
+
