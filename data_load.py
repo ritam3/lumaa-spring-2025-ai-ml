@@ -1,4 +1,4 @@
-from get_data import get_data
+import pandas as pd
 from data_transform import preprocess, add_date_genre
 from dotenv import load_dotenv
 import os
@@ -7,7 +7,7 @@ load_dotenv()
 
 data_path = os.getenv("path")
 
-df = get_data(data_path)
+df = pd.read_csv(data_path)
 
 ## adds the date and genre into description
 ## stems and lemmetize the description to make final description
