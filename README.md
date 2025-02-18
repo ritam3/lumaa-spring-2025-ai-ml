@@ -20,72 +20,55 @@ Build a **content-based recommendation system** that, given a **short text descr
 ## Requirements
 
 1. **Dataset**  
-   - Use a **small** public dataset of items (e.g., a list of movies with plot summaries, or other textual descriptions).  
-   - Make sure the dataset is easy to handle (maybe 100–500 rows) so the solution remains quick to implement and run.  
-   - Include the dataset in your forked repository *or* provide instructions/link on how to download it.  
+   - Dataset is publicly available at https://www.kaggle.com/datasets/adikhare/top-100-imdb-movies, it contains the top 100 IMDB Movies 
 
 2. **Approach**  
-   - **Content-Based**: At a minimum, use text similarity to recommend items.  
-     - For instance, you can transform both the user’s text input and each item’s description into TF-IDF vectors and compute **cosine similarity**.  
-   - Return the **top N** similar items (e.g., top 5).
+   - Have used DistilBert + TF-IDF score for each word.
+   - TF-IDF score is multiplied with Bert Encoding for each word. This helps in better exact matching and capture semantic meaning.
+   - Cosine similarity is used to compare the embedding of search query and description of each movie
+   - Every sentence is converted in lower case, stemmed and lemmetize before computing the tfidf score and embeddings
 
-3. **Code Organization**  
-   - You may use a **Jupyter Notebook** or **Python scripts**.  
-   - Keep it **readable** and **modular** (e.g., one section for loading data, one for building vectors, one for computing similarity, etc.).  
-   - Briefly comment or docstring your key functions/sections.
+3. **Setup**  
+   - My Submission contains both the Jupyter and .py scripts.
+   - Create a Conda Environment and running the following commands to create env and install requirements
+   - ```
+     conda create -n "lumaa" python=3.10.0 ipython
+     conda activate lumaa
+     pip install -r requirements.txt
+     ```
 
-4. **Output**  
-   - When given an input description (e.g., `"I like action movies set in space"`), your system should print or return a list of recommended items (e.g., 3–5 titles).  
-   - Include the similarity score or rank if you’d like.
+4. **Running**  
+   - Run the main.py from terminal by following the code below
+   - ```
+     python main.py -s "I love movies based on gangster, cartels and crime that have drama and action in it with great storyline"
+     ```
 
-5. **Summary & Instructions**  
-   - A short `README.md` that includes:
-     - **Dataset**: Where it’s from, any steps to load it.  
-     - **Setup**: Python version, virtual environment instructions, and how to install dependencies (`pip install -r requirements.txt`).  
-     - **Running**: How to run your code (e.g., `python recommend.py "Some user description"` or open your notebook in Jupyter).  
-     - **Results**: A brief example of your system’s output for a sample query.
+5. **Result**  
+   - The result generated is shown below, it gives 5 Movie Titles along with the description and similarity score
+   - ```
+     [nltk_data] Downloading package wordnet to
+     [nltk_data]     /Users/ritamupadhyay/nltk_data...
+     [nltk_data]   Package wordnet is already up-to-date!
+     Search Query: I love movies based on gangster, cartels and crime that have drama and action in it with great storyline
+     
+     Movie Title : Pulp Fiction,
+      Description : The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.,
+      Similarity Score: 0.8260810375213623
+     
+     Movie Title : The Hunt,
+      Description : A teacher lives a lonely life, all the while struggling over his son's custody. His life slowly gets better as he finds love and receives good news from his son, but his new luck is about to be brutally shattered by an innocent little lie.,
+      Similarity Score: 0.8201543092727661
+     
+     Movie Title : Cinema Paradiso,
+      Description : A filmmaker recalls his childhood when falling in love with the pictures at the cinema of his home village and forms a deep friendship with the cinema's projectionist.,
+      Similarity Score: 0.8177715539932251
+     
+     Movie Title : Fight Club,
+      Description : An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.,
+      Similarity Score: 0.8097826838493347
+     
+     Movie Title : City of God,
+      Description : In the slums of Rio, two kids' paths diverge as one struggles to become a photographer and the other a kingpin.,
+      Similarity Score: 0.8060258030891418
+     ```
 
----
-
-## Deliverables
-
-1. **Fork the Public Repository**  
-   - **Fork** this repo into your own GitHub account.
-
-2. **Implement Your Solution**  
-   - Load and preprocess your dataset (e.g., read CSV, handle text columns).  
-   - Convert text data to vectors (e.g., TF-IDF).  
-   - Implement a function to compute similarity between the user’s query and each item’s description.  
-   - Return the top matches.
-   - Salary expectation per month (Mandatory)
-
-3. **Short Video Demo**  
-   - In a `.md` file (e.g., `demo.md`) within your fork, paste a link to a **brief screen recording** (video link).  
-   - Demonstrate:
-     - How you run the recommendation code.  
-     - A sample query and the results.
-
-4. **Deadline**  
-   - Submit your fork by **Sunday, Feb 23th 11:59 pm PST**.
-
-> **Note**: This should be doable within ~3 hours. Keep it **straightforward**—you do **not** need advanced neural networks or complex pipelines. A simple TF-IDF + cosine similarity approach is sufficient.
-
----
-
-## Evaluation Criteria
-
-1. **Functionality**  
-   - Does your code run without errors?  
-   - When given an input query, does it successfully output relevant items?
-
-2. **Code Quality**  
-   - Clear, commented code (where it counts).  
-   - Logical steps (load data → transform → recommend).
-
-3. **Clarity**  
-   - Is your `README.md` straightforward about setup, how to run, and what to expect?
-
-4. **ML/Recommendation Understanding**  
-   - Basic implementation of a content-based recommendation approach (vectorization, similarity measure).
-
-**We look forward to seeing your solution!** Good luck!
