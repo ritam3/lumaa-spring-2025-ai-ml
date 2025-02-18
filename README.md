@@ -17,7 +17,7 @@ Build a **content-based recommendation system** that, given a **short text descr
 
 ---
 
-## Requirements
+## Delivery
 
 1. **Dataset**  
    - Dataset is publicly available at https://www.kaggle.com/datasets/adikhare/top-100-imdb-movies, it contains the top 100 IMDB Movies 
